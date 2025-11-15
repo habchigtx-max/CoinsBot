@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: CoinsBot
+    env: python
+    plan: free
+    region: oregon
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app --bind 0.0.0.0:$PORT"
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        value: "8590208004:AAHOmPfgiVkFctlv_VP9MY037evLCP-ss2U"
+      - key: ALIEXPRESS_API_PUBLIC
+        value: "521706"
+      - key: ALIEXPRESS_API_SECRET
+        value: "SRd6WXDV8sHqwFaS4UM8gHI6a1p9uAUK"
+      - key: ALIEXPRESS_TRACKING_ID
+        value: "199206"
+      - key: RUN_MODE
+        value: "webhook"   # أو "polling" حسب ما تريد
+      - key: WEBHOOK_URL
+        value: "https://coinsbot-86u4.onrender.com/webhook"
+    autoDeploy: true
+
